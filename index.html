@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0c0d10" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHROMA3 | Video, Motion, Architecture Consulting & Project Management</title>
+  <meta name="description" content="CHROMA3: video editing and motion design, plus architecture consulting and project management." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+            display: ['"Bricolage Grotesque"', '"Hanken Grotesk"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            ink: '#0c0d10',
+            panel: '#14151a',
+            line: '#2a2c33',
+            paper: '#ecebe6',
+            mute: '#9b9ca6',
+            cr: '#ff4057',  // red   : video & motion
+            cb: '#3d7bff',  // blue  : architecture
+            cg: '#2fe38f'   // green : project management
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { background:#0c0d10; color-scheme:dark; }
+    body { background:#0c0d10; color:#ecebe6; }
+    .glass-nav { background:rgba(12,13,16,.82); backdrop-filter:blur(14px); }
+    :focus-visible { outline:2px solid #ecebe6; outline-offset:3px; border-radius:6px; }
+
+    /* Hero: three additive circles (the RGB model video is built on) converge once on load */
+    .rgb { position:relative; isolation:isolate; width:min(78vw,440px); aspect-ratio:1; background:#0c0d10; }
+    .rgb i { position:absolute; width:62%; aspect-ratio:1; border-radius:9999px; mix-blend-mode:screen; opacity:.92;
+             animation:converge 1.9s cubic-bezier(.2,.7,.2,1) both; }
+    .rgb .r { left:0; top:0; background:#ff4057; --dx:-34%; --dy:-24%; }
+    .rgb .g { right:0; top:0; background:#2fe38f; --dx:34%; --dy:-24%; }
+    .rgb .b { left:19%; bottom:0; background:#3d7bff; --dx:0%; --dy:36%; }
+    @keyframes converge { from { transform:translate(var(--dx),var(--dy)); opacity:0; } to { transform:none; opacity:.92; } }
+    @media (prefers-reduced-motion:reduce) { .rgb i { animation:none; } html { scroll-behavior:auto; } }
+
+    .filter-btn { background:#14151a; color:#9b9ca6; border:1px solid #2a2c33; }
+    .filter-btn:hover { color:#ecebe6; }
+    .filter-btn[aria-pressed="true"] { background:#ecebe6; color:#0c0d10; border-color:#ecebe6; }
+    .rule-list li { border-top:1px solid #2a2c33; }
+    .rule-list li:last-child { border-bottom:1px solid #2a2c33; }
+  </style>
+</head>
+<body class="antialiased font-sans selection:bg-paper selection:text-ink">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="art-video-editing" viewBox="0 0 800 400"><defs><radialGradient id="g-video-editing" cx="72%" cy="45%" r="65%"><stop offset="0" stop-color="#ff4057" stop-opacity=".30"/><stop offset="1" stop-color="#ff4057" stop-opacity="0"/></radialGradient></defs><rect width="800" height="400" fill="#0f1014"/><rect width="800" height="400" fill="url(#g-video-editing)"/><line x1="240" y1="38" x2="240" y2="56" stroke="#fff" stroke-opacity=".22"/><line x1="254" y1="38" x2="254" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="268" y1="38" x2="268" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="282" y1="38" x2="282" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="296" y1="38" x2="296" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="310" y1="38" x2="310" y2="56" stroke="#fff" stroke-opacity=".22"/><line x1="324" y1="38" x2="324" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="338" y1="38" x2="338" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="352" y1="38" x2="352" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="366" y1="38" x2="366" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="380" y1="38" x2="380" y2="56" stroke="#fff" stroke-opacity=".22"/><line x1="394" y1="38" x2="394" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="408" y1="38" x2="408" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="422" y1="38" x2="422" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="436" y1="38" x2="436" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="450" y1="38" x2="450" y2="56" stroke="#fff" stroke-opacity=".22"/><line x1="464" y1="38" x2="464" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="478" y1="38" x2="478" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="492" y1="38" x2="492" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="506" y1="38" x2="506" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="520" y1="38" x2="520" y2="56" stroke="#fff" stroke-opacity=".22"/><line x1="534" y1="38" x2="534" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="548" y1="38" x2="548" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="562" y1="38" x2="562" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="576" y1="38" x2="576" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="590" y1="38" x2="590" y2="56" stroke="#fff" stroke-opacity=".22"/><line x1="604" y1="38" x2="604" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="618" y1="38" x2="618" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="632" y1="38" x2="632" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="646" y1="38" x2="646" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="660" y1="38" x2="660" y2="56" stroke="#fff" stroke-opacity=".22"/><line x1="674" y1="38" x2="674" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="688" y1="38" x2="688" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="702" y1="38" x2="702" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="716" y1="38" x2="716" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="730" y1="38" x2="730" y2="56" stroke="#fff" stroke-opacity=".22"/><line x1="744" y1="38" x2="744" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="758" y1="38" x2="758" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="772" y1="38" x2="772" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="786" y1="38" x2="786" y2="47" stroke="#fff" stroke-opacity=".22"/><line x1="800" y1="38" x2="800" y2="56" stroke="#fff" stroke-opacity=".22"/><rect x="250" y="80" width="120" height="40" rx="6" fill="#ff4057" fill-opacity="0.95"/><rect x="250" y="80" width="120" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="378" y="80" width="90" height="40" rx="6" fill="#ff4057" fill-opacity="0.55"/><rect x="378" y="80" width="90" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="476" y="80" width="150" height="40" rx="6" fill="#ff4057" fill-opacity="0.8"/><rect x="476" y="80" width="150" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="634" y="80" width="140" height="40" rx="6" fill="#ff4057" fill-opacity="0.4"/><rect x="634" y="80" width="140" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="290" y="132" width="170" height="40" rx="6" fill="#ff4057" fill-opacity="0.5"/><rect x="290" y="132" width="170" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="468" y="132" width="110" height="40" rx="6" fill="#ff4057" fill-opacity="0.95"/><rect x="468" y="132" width="110" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="586" y="132" width="190" height="40" rx="6" fill="#ff4057" fill-opacity="0.6"/><rect x="586" y="132" width="190" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="250" y="184" width="80" height="40" rx="6" fill="#ff4057" fill-opacity="0.35"/><rect x="250" y="184" width="80" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="338" y="184" width="200" height="40" rx="6" fill="#ff4057" fill-opacity="0.75"/><rect x="338" y="184" width="200" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="546" y="184" width="120" height="40" rx="6" fill="#ff4057" fill-opacity="0.45"/><rect x="546" y="184" width="120" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="674" y="184" width="110" height="40" rx="6" fill="#ff4057" fill-opacity="0.85"/><rect x="674" y="184" width="110" height="9" rx="4" fill="#fff" fill-opacity=".18"/><rect x="250" y="308.2" width="3" height="23.5" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="256" y="300.6" width="3" height="38.7" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="262" y="294.7" width="3" height="50.7" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="268" y="291.4" width="3" height="57.2" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="274" y="291.5" width="3" height="57.1" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="280" y="294.9" width="3" height="50.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="286" y="301.0" width="3" height="38.1" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="292" y="308.7" width="3" height="22.7" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="298" y="316.6" width="3" height="6.8" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="304" y="310.7" width="3" height="18.7" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="310" y="306.2" width="3" height="27.6" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="316" y="304.6" width="3" height="30.7" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="322" y="306.0" width="3" height="28.0" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="328" y="309.7" width="3" height="20.5" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="334" y="314.8" width="3" height="10.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="340" y="314.1" width="3" height="11.8" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="346" y="310.3" width="3" height="19.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="352" y="308.8" width="3" height="22.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="358" y="310.1" width="3" height="19.7" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="364" y="314.2" width="3" height="11.5" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="370" y="313.5" width="3" height="12.9" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="376" y="306.3" width="3" height="27.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="382" y="299.5" width="3" height="41.1" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="388" y="294.3" width="3" height="51.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="394" y="292.0" width="3" height="56.0" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="400" y="293.0" width="3" height="54.1" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="406" y="297.2" width="3" height="45.6" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="412" y="304.0" width="3" height="31.9" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="418" y="312.3" width="3" height="15.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="424" y="313.3" width="3" height="13.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="430" y="306.4" width="3" height="27.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="436" y="301.8" width="3" height="36.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="442" y="300.3" width="3" height="39.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="448" y="301.9" width="3" height="36.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="454" y="305.9" width="3" height="28.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="460" y="311.2" width="3" height="17.6" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="466" y="316.6" width="3" height="6.7" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="472" y="313.2" width="3" height="13.7" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="478" y="311.3" width="3" height="17.5" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="484" y="312.1" width="3" height="15.8" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="490" y="315.7" width="3" height="8.7" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="496" y="312.7" width="3" height="14.5" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="502" y="306.2" width="3" height="27.5" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="508" y="300.2" width="3" height="39.6" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="514" y="295.9" width="3" height="48.2" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="520" y="294.4" width="3" height="51.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="526" y="296.1" width="3" height="47.8" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="532" y="301.0" width="3" height="38.0" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="538" y="308.3" width="3" height="23.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="544" y="316.9" width="3" height="6.1" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="550" y="308.6" width="3" height="22.8" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="556" y="301.7" width="3" height="36.6" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="562" y="297.4" width="3" height="45.2" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="568" y="296.3" width="3" height="47.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="574" y="298.3" width="3" height="43.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="580" y="302.9" width="3" height="34.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="586" y="308.8" width="3" height="22.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="592" y="314.8" width="3" height="10.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="598" y="314.5" width="3" height="11.1" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="604" y="312.0" width="3" height="16.0" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="610" y="312.3" width="3" height="15.5" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="616" y="315.2" width="3" height="9.5" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="622" y="313.8" width="3" height="12.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="628" y="308.0" width="3" height="24.1" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="634" y="302.6" width="3" height="34.8" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="640" y="298.9" width="3" height="42.1" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="646" y="298.0" width="3" height="43.9" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="652" y="300.3" width="3" height="39.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="658" y="305.6" width="3" height="28.9" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="664" y="313.1" width="3" height="13.8" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="670" y="312.3" width="3" height="15.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="676" y="304.0" width="3" height="31.9" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="682" y="297.5" width="3" height="45.0" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="688" y="293.8" width="3" height="52.4" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="694" y="293.3" width="3" height="53.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="700" y="296.1" width="3" height="47.8" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="706" y="301.4" width="3" height="37.2" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="712" y="308.1" width="3" height="23.9" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="718" y="314.7" width="3" height="10.5" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="724" y="313.9" width="3" height="12.2" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="730" y="310.8" width="3" height="18.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="736" y="310.6" width="3" height="18.8" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="742" y="313.0" width="3" height="13.9" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="748" y="316.5" width="3" height="7.0" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="754" y="311.1" width="3" height="17.8" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="760" y="306.2" width="3" height="27.6" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="766" y="303.0" width="3" height="34.1" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="772" y="302.4" width="3" height="35.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="778" y="304.8" width="3" height="30.3" rx="1.5" fill="#ff4057" fill-opacity=".55"/><rect x="784" y="310.2" width="3" height="19.7" rx="1.5" fill="#ff4057" fill-opacity=".55"/><line x1="520" y1="34" x2="520" y2="368" stroke="#fff" stroke-width="1.5"/><polygon points="511,26 529,26 520,40" fill="#fff"/></symbol><symbol id="art-motion-design-vfx" viewBox="0 0 800 400"><defs><radialGradient id="g-motion-design-vfx" cx="72%" cy="45%" r="65%"><stop offset="0" stop-color="#ff4057" stop-opacity=".30"/><stop offset="1" stop-color="#ff4057" stop-opacity="0"/></radialGradient></defs><rect width="800" height="400" fill="#0f1014"/><rect width="800" height="400" fill="url(#g-motion-design-vfx)"/><line x1="250" y1="30" x2="250" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="300" y1="30" x2="300" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="350" y1="30" x2="350" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="400" y1="30" x2="400" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="450" y1="30" x2="450" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="500" y1="30" x2="500" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="550" y1="30" x2="550" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="600" y1="30" x2="600" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="650" y1="30" x2="650" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="700" y1="30" x2="700" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="750" y1="30" x2="750" y2="380" stroke="#fff" stroke-opacity=".05"/><line x1="250" y1="30" x2="800" y2="30" stroke="#fff" stroke-opacity=".05"/><line x1="250" y1="80" x2="800" y2="80" stroke="#fff" stroke-opacity=".05"/><line x1="250" y1="130" x2="800" y2="130" stroke="#fff" stroke-opacity=".05"/><line x1="250" y1="180" x2="800" y2="180" stroke="#fff" stroke-opacity=".05"/><line x1="250" y1="230" x2="800" y2="230" stroke="#fff" stroke-opacity=".05"/><line x1="250" y1="280" x2="800" y2="280" stroke="#fff" stroke-opacity=".05"/><line x1="250" y1="330" x2="800" y2="330" stroke="#fff" stroke-opacity=".05"/><line x1="250" y1="380" x2="800" y2="380" stroke="#fff" stroke-opacity=".05"/><path d="M250,330 C420,330 430,90 600,90 S 780,90 790,90" fill="none" stroke="#ff4057" stroke-width="2" stroke-opacity=".7"/><path d="M250,330 H420 M600,90 H430" stroke="#fff" stroke-opacity=".3" stroke-dasharray="4 4"/><circle cx="420" cy="330" r="4" fill="#0f1014" stroke="#fff"/><circle cx="430" cy="90" r="4" fill="#0f1014" stroke="#fff"/><circle cx="248.9" cy="277.5" r="4.0" fill="#ff4057" fill-opacity="0.08"/><circle cx="277.7" cy="269.3" r="5.1" fill="#ff4057" fill-opacity="0.15"/><circle cx="303.3" cy="256.3" r="6.2" fill="#ff4057" fill-opacity="0.21"/><circle cx="326.2" cy="239.4" r="7.2" fill="#ff4057" fill-opacity="0.28"/><circle cx="347.1" cy="219.3" r="8.3" fill="#ff4057" fill-opacity="0.34"/><circle cx="366.5" cy="197.0" r="9.4" fill="#ff4057" fill-opacity="0.41"/><circle cx="385.0" cy="173.3" r="10.5" fill="#ff4057" fill-opacity="0.47"/><circle cx="403.1" cy="149.2" r="11.5" fill="#ff4057" fill-opacity="0.54"/><circle cx="421.5" cy="125.5" r="12.6" fill="#ff4057" fill-opacity="0.60"/><circle cx="440.8" cy="103.0" r="13.7" fill="#ff4057" fill-opacity="0.67"/><circle cx="461.5" cy="82.6" r="14.8" fill="#ff4057" fill-opacity="0.73"/><circle cx="484.1" cy="65.3" r="15.8" fill="#ff4057" fill-opacity="0.80"/><circle cx="509.4" cy="51.8" r="16.9" fill="#ff4057" fill-opacity="0.86"/><circle cx="537.8" cy="43.1" r="18.0" fill="#ff4057" fill-opacity="0.93"/><line x1="250" y1="372" x2="790" y2="372" stroke="#fff" stroke-opacity=".25"/><line x1="250" y1="330" x2="250" y2="372" stroke="#fff" stroke-opacity=".15" stroke-dasharray="2 4"/><rect x="244" y="324" width="12" height="12" transform="rotate(45 250 330)" fill="#ff4057"/><rect x="245" y="367" width="10" height="10" transform="rotate(45 250 372)" fill="#fff"/><line x1="425" y1="210" x2="425" y2="372" stroke="#fff" stroke-opacity=".15" stroke-dasharray="2 4"/><rect x="419" y="204" width="12" height="12" transform="rotate(45 425 210)" fill="#ff4057"/><rect x="420" y="367" width="10" height="10" transform="rotate(45 425 372)" fill="#fff"/><line x1="600" y1="90" x2="600" y2="372" stroke="#fff" stroke-opacity=".15" stroke-dasharray="2 4"/><rect x="594" y="84" width="12" height="12" transform="rotate(45 600 90)" fill="#ff4057"/><rect x="595" y="367" width="10" height="10" transform="rotate(45 600 372)" fill="#fff"/></symbol><symbol id="art-sound-design-mix" viewBox="0 0 800 400"><defs><radialGradient id="g-sound-design-mix" cx="72%" cy="45%" r="65%"><stop offset="0" stop-color="#ff4057" stop-opacity=".30"/><stop offset="1" stop-color="#ff4057" stop-opacity="0"/></radialGradient></defs><rect width="800" height="400" fill="#0f1014"/><rect width="800" height="400" fill="url(#g-sound-design-mix)"/><line x1="240" y1="100" x2="800" y2="100" stroke="#fff" stroke-opacity="0.05"/><line x1="240" y1="200" x2="800" y2="200" stroke="#fff" stroke-opacity="0.14"/><line x1="240" y1="300" x2="800" y2="300" stroke="#fff" stroke-opacity="0.05"/><rect x="250.0" y="192.0" width="4.5" height="15.9" rx="2.2" fill="#ff4057" fill-opacity="0.60"/><rect x="258.1" y="189.3" width="4.5" height="21.5" rx="2.2" fill="#ff4057" fill-opacity="0.75"/><rect x="266.2" y="186.2" width="4.5" height="27.7" rx="2.2" fill="#ff4057" fill-opacity="0.87"/><rect x="274.3" y="183.1" width="4.5" height="33.7" rx="2.2" fill="#ff4057" fill-opacity="0.96"/><rect x="282.4" y="180.6" width="4.5" height="38.7" rx="2.2" fill="#ff4057" fill-opacity="0.99"/><rect x="290.5" y="179.1" width="4.5" height="41.7" rx="2.2" fill="#ff4057" fill-opacity="0.97"/><rect x="298.6" y="179.1" width="4.5" height="41.8" rx="2.2" fill="#ff4057" fill-opacity="0.90"/><rect x="306.7" y="180.8" width="4.5" height="38.3" rx="2.2" fill="#ff4057" fill-opacity="0.78"/><rect x="314.8" y="184.4" width="4.5" height="31.2" rx="2.2" fill="#ff4057" fill-opacity="0.63"/><rect x="322.9" y="189.5" width="4.5" height="21.0" rx="2.2" fill="#ff4057" fill-opacity="0.46"/><rect x="331.0" y="195.6" width="4.5" height="8.8" rx="2.2" fill="#ff4057" fill-opacity="0.31"/><rect x="339.1" y="190.1" width="4.5" height="19.9" rx="2.2" fill="#ff4057" fill-opacity="0.42"/><rect x="347.2" y="184.6" width="4.5" height="30.8" rx="2.2" fill="#ff4057" fill-opacity="0.51"/><rect x="355.3" y="180.9" width="4.5" height="38.2" rx="2.2" fill="#ff4057" fill-opacity="0.56"/><rect x="363.4" y="180.0" width="4.5" height="40.1" rx="2.2" fill="#ff4057" fill-opacity="0.55"/><rect x="371.5" y="182.2" width="4.5" height="35.6" rx="2.2" fill="#ff4057" fill-opacity="0.50"/><rect x="379.6" y="187.6" width="4.5" height="24.8" rx="2.2" fill="#ff4057" fill-opacity="0.41"/><rect x="387.7" y="195.5" width="4.5" height="9.0" rx="2.2" fill="#ff4057" fill-opacity="0.31"/><rect x="395.8" y="187.3" width="4.5" height="25.3" rx="2.2" fill="#ff4057" fill-opacity="0.40"/><rect x="403.9" y="178.6" width="4.5" height="42.9" rx="2.2" fill="#ff4057" fill-opacity="0.48"/><rect x="412.0" y="172.1" width="4.5" height="55.7" rx="2.2" fill="#ff4057" fill-opacity="0.54"/><rect x="420.1" y="169.9" width="4.5" height="60.1" rx="2.2" fill="#ff4057" fill-opacity="0.54"/><rect x="428.2" y="173.4" width="4.5" height="53.2" rx="2.2" fill="#ff4057" fill-opacity="0.50"/><rect x="436.3" y="183.3" width="4.5" height="33.4" rx="2.2" fill="#ff4057" fill-opacity="0.40"/><rect x="444.4" y="192.7" width="4.5" height="14.7" rx="2.2" fill="#ff4057" fill-opacity="0.33"/><rect x="452.5" y="171.7" width="4.5" height="56.6" rx="2.2" fill="#ff4057" fill-opacity="0.48"/><rect x="460.6" y="148.0" width="4.5" height="104.0" rx="2.2" fill="#ff4057" fill-opacity="0.64"/><rect x="468.7" y="124.4" width="4.5" height="151.2" rx="2.2" fill="#ff4057" fill-opacity="0.79"/><rect x="476.8" y="104.0" width="4.5" height="191.9" rx="2.2" fill="#ff4057" fill-opacity="0.91"/><rect x="484.9" y="89.8" width="4.5" height="220.4" rx="2.2" fill="#ff4057" fill-opacity="0.98"/><rect x="493.0" y="83.8" width="4.5" height="232.3" rx="2.2" fill="#ff4057" fill-opacity="1.00"/><rect x="501.1" y="87.3" width="4.5" height="225.5" rx="2.2" fill="#ff4057" fill-opacity="0.96"/><rect x="509.2" y="99.8" width="4.5" height="200.4" rx="2.2" fill="#ff4057" fill-opacity="0.87"/><rect x="517.3" y="119.9" width="4.5" height="160.2" rx="2.2" fill="#ff4057" fill-opacity="0.74"/><rect x="525.4" y="144.8" width="4.5" height="110.4" rx="2.2" fill="#ff4057" fill-opacity="0.59"/><rect x="533.5" y="171.1" width="4.5" height="57.9" rx="2.2" fill="#ff4057" fill-opacity="0.44"/><rect x="541.6" y="195.0" width="4.5" height="10.0" rx="2.2" fill="#ff4057" fill-opacity="0.31"/><rect x="549.7" y="178.5" width="4.5" height="42.9" rx="2.2" fill="#ff4057" fill-opacity="0.40"/><rect x="557.8" y="167.9" width="4.5" height="64.1" rx="2.2" fill="#ff4057" fill-opacity="0.46"/><rect x="565.9" y="166.3" width="4.5" height="67.5" rx="2.2" fill="#ff4057" fill-opacity="0.47"/><rect x="574.0" y="173.1" width="4.5" height="53.8" rx="2.2" fill="#ff4057" fill-opacity="0.43"/><rect x="582.1" y="186.6" width="4.5" height="26.7" rx="2.2" fill="#ff4057" fill-opacity="0.35"/><rect x="590.2" y="187.8" width="4.5" height="24.3" rx="2.2" fill="#ff4057" fill-opacity="0.35"/><rect x="598.3" y="169.7" width="4.5" height="60.6" rx="2.2" fill="#ff4057" fill-opacity="0.46"/><rect x="606.4" y="154.3" width="4.5" height="91.4" rx="2.2" fill="#ff4057" fill-opacity="0.55"/><rect x="614.5" y="144.4" width="4.5" height="111.2" rx="2.2" fill="#ff4057" fill-opacity="0.62"/><rect x="622.6" y="141.9" width="4.5" height="116.2" rx="2.2" fill="#ff4057" fill-opacity="0.65"/><rect x="630.7" y="147.3" width="4.5" height="105.4" rx="2.2" fill="#ff4057" fill-opacity="0.62"/><rect x="638.8" y="159.9" width="4.5" height="80.1" rx="2.2" fill="#ff4057" fill-opacity="0.55"/><rect x="646.9" y="178.1" width="4.5" height="43.8" rx="2.2" fill="#ff4057" fill-opacity="0.43"/><rect x="655.0" y="192.8" width="4.5" height="14.3" rx="2.2" fill="#ff4057" fill-opacity="0.32"/><rect x="663.1" y="171.7" width="4.5" height="56.7" rx="2.2" fill="#ff4057" fill-opacity="0.49"/><rect x="671.2" y="153.1" width="4.5" height="93.9" rx="2.2" fill="#ff4057" fill-opacity="0.66"/><rect x="679.3" y="139.2" width="4.5" height="121.6" rx="2.2" fill="#ff4057" fill-opacity="0.80"/><rect x="687.4" y="131.4" width="4.5" height="137.2" rx="2.2" fill="#ff4057" fill-opacity="0.91"/><rect x="695.5" y="130.0" width="4.5" height="140.0" rx="2.2" fill="#ff4057" fill-opacity="0.96"/><rect x="703.6" y="134.4" width="4.5" height="131.2" rx="2.2" fill="#ff4057" fill-opacity="0.96"/><rect x="711.7" y="143.4" width="4.5" height="113.2" rx="2.2" fill="#ff4057" fill-opacity="0.90"/><rect x="719.8" y="155.2" width="4.5" height="89.6" rx="2.2" fill="#ff4057" fill-opacity="0.81"/><rect x="727.9" y="167.9" width="4.5" height="64.1" rx="2.2" fill="#ff4057" fill-opacity="0.68"/><rect x="736.0" y="179.9" width="4.5" height="40.3" rx="2.2" fill="#ff4057" fill-opacity="0.53"/><rect x="744.1" y="189.7" width="4.5" height="20.7" rx="2.2" fill="#ff4057" fill-opacity="0.40"/><rect x="752.2" y="195.5" width="4.5" height="9.0" rx="2.2" fill="#ff4057" fill-opacity="0.31"/><rect x="760.3" y="191.8" width="4.5" height="16.4" rx="2.2" fill="#ff4057" fill-opacity="0.38"/><rect x="768.4" y="191.1" width="4.5" height="17.9" rx="2.2" fill="#ff4057" fill-opacity="0.40"/><rect x="776.5" y="192.6" width="4.5" height="14.8" rx="2.2" fill="#ff4057" fill-opacity="0.38"/><rect x="784.6" y="195.5" width="4.5" height="8.9" rx="2.2" fill="#ff4057" fill-opacity="0.31"/><rect x="792.7" y="193.0" width="4.5" height="14.0" rx="2.2" fill="#ff4057" fill-opacity="0.39"/><polyline points="250,200.0 258,207.7 266,214.7 274,220.4 282,224.2 290,225.9 298,225.3 306,222.4 314,217.6 322,211.1 330,203.7 338,195.9 346,188.5 354,182.1 362,177.3 370,174.6 378,174.1 386,175.9 394,179.9 402,185.7 410,192.7 418,200.4 426,208.1 434,215.0 442,220.6 450,224.4 458,226.0 466,225.2 474,222.2 482,217.2 490,210.7 498,203.2 506,195.5 514,188.1 522,181.8 530,177.1 538,174.5 546,174.1 554,176.1 562,180.2 570,186.0 578,193.2 586,200.9 594,208.5 602,215.4 610,220.9 618,224.5 626,226.0 634,225.1 642,222.0 650,216.9 658,210.3 666,202.8 674,195.0 682,187.7 690,181.5 698,176.9 706,174.4 714,174.2 722,176.3 730,180.5 738,186.4 746,193.6 754,201.3 762,208.9 770,215.7 778,221.2 786,224.7 794,226.0 802,225.0" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.2"/></symbol><symbol id="art-architecture-consulting" viewBox="0 0 800 400"><defs><radialGradient id="g-architecture-consulting" cx="72%" cy="45%" r="65%"><stop offset="0" stop-color="#3d7bff" stop-opacity=".30"/><stop offset="1" stop-color="#3d7bff" stop-opacity="0"/></radialGradient></defs><rect width="800" height="400" fill="#0f1014"/><rect width="800" height="400" fill="url(#g-architecture-consulting)"/><line x1="240" y1="20" x2="240" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="280" y1="20" x2="280" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="320" y1="20" x2="320" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="360" y1="20" x2="360" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="400" y1="20" x2="400" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="440" y1="20" x2="440" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="480" y1="20" x2="480" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="520" y1="20" x2="520" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="560" y1="20" x2="560" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="600" y1="20" x2="600" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="640" y1="20" x2="640" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="680" y1="20" x2="680" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="720" y1="20" x2="720" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="760" y1="20" x2="760" y2="390" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="20" x2="800" y2="20" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="60" x2="800" y2="60" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="100" x2="800" y2="100" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="140" x2="800" y2="140" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="180" x2="800" y2="180" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="220" x2="800" y2="220" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="260" x2="800" y2="260" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="300" x2="800" y2="300" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="340" x2="800" y2="340" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="380" x2="800" y2="380" stroke="#3d7bff" stroke-opacity=".09"/><line x1="240" y1="170" x2="800" y2="170" stroke="#3d7bff" stroke-opacity=".3" stroke-dasharray="6 5"/><line x1="240" y1="330" x2="800" y2="330" stroke="#3d7bff" stroke-opacity=".3" stroke-dasharray="6 5"/><line x1="250" y1="330" x2="790" y2="330" stroke="#3d7bff" stroke-width="2"/><line x1="260" y1="331" x2="250" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="274" y1="331" x2="264" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="288" y1="331" x2="278" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="302" y1="331" x2="292" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="316" y1="331" x2="306" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="330" y1="331" x2="320" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="344" y1="331" x2="334" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="358" y1="331" x2="348" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="372" y1="331" x2="362" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="386" y1="331" x2="376" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="400" y1="331" x2="390" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="414" y1="331" x2="404" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="428" y1="331" x2="418" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="442" y1="331" x2="432" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="456" y1="331" x2="446" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="470" y1="331" x2="460" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="484" y1="331" x2="474" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="498" y1="331" x2="488" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="512" y1="331" x2="502" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="526" y1="331" x2="516" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="540" y1="331" x2="530" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="554" y1="331" x2="544" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="568" y1="331" x2="558" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="582" y1="331" x2="572" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="596" y1="331" x2="586" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="610" y1="331" x2="600" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="624" y1="331" x2="614" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="638" y1="331" x2="628" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="652" y1="331" x2="642" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="666" y1="331" x2="656" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="680" y1="331" x2="670" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="694" y1="331" x2="684" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="708" y1="331" x2="698" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="722" y1="331" x2="712" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="736" y1="331" x2="726" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="750" y1="331" x2="740" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="764" y1="331" x2="754" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><line x1="778" y1="331" x2="768" y2="341" stroke="#3d7bff" stroke-opacity=".4"/><rect x="330" y="170" width="230" height="160" stroke="#3d7bff" stroke-width="1.6" fill="#3d7bff" fill-opacity=".07"/><rect x="312" y="164" width="266" height="6" fill="#3d7bff" fill-opacity=".6"/><rect x="450" y="96" width="170" height="68" stroke="#3d7bff" stroke-width="1.6" fill="#3d7bff" fill-opacity=".07"/><rect x="436" y="90" width="198" height="6" fill="#3d7bff" fill-opacity=".6"/><rect x="346" y="186" width="38" height="52" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><rect x="346" y="252" width="38" height="78" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><rect x="398" y="186" width="38" height="52" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><rect x="398" y="252" width="38" height="78" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><rect x="450" y="186" width="38" height="52" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><rect x="450" y="252" width="38" height="78" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><rect x="502" y="186" width="38" height="52" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><rect x="502" y="252" width="38" height="78" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><rect x="466" y="110" width="40" height="40" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><rect x="518" y="110" width="40" height="40" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><rect x="570" y="110" width="40" height="40" stroke="#3d7bff" fill="#3d7bff" fill-opacity=".16"/><line x1="330" y1="356" x2="560" y2="356" stroke="#3d7bff"/><line x1="330" y1="350" x2="330" y2="362" stroke="#3d7bff"/><line x1="560" y1="350" x2="560" y2="362" stroke="#3d7bff"/><text x="445" y="350" text-anchor="middle" font-size="11" font-family="monospace" fill="#3d7bff">12 400</text><line x1="672" y1="90" x2="672" y2="330" stroke="#3d7bff"/><line x1="666" y1="90" x2="678" y2="90" stroke="#3d7bff"/><line x1="666" y1="330" x2="678" y2="330" stroke="#3d7bff"/><text x="684" y="214" font-size="11" font-family="monospace" fill="#3d7bff">9 600</text><circle cx="720" cy="80" r="40" fill="none" stroke="#3d7bff" stroke-opacity=".4" stroke-dasharray="4 4"/><line x1="670" y1="80" x2="770" y2="80" stroke="#3d7bff" stroke-opacity=".3"/><line x1="720" y1="30" x2="720" y2="130" stroke="#3d7bff" stroke-opacity=".3"/></symbol><symbol id="art-project-management" viewBox="0 0 800 400"><defs><radialGradient id="g-project-management" cx="72%" cy="45%" r="65%"><stop offset="0" stop-color="#2fe38f" stop-opacity=".30"/><stop offset="1" stop-color="#2fe38f" stop-opacity="0"/></radialGradient></defs><rect width="800" height="400" fill="#0f1014"/><rect width="800" height="400" fill="url(#g-project-management)"/><line x1="250" y1="50" x2="250" y2="370" stroke="#fff" stroke-opacity=".06"/><text x="255" y="44" font-size="10" font-family="sans-serif" fill="#fff" fill-opacity=".35">W1</text><line x1="308" y1="50" x2="308" y2="370" stroke="#fff" stroke-opacity=".06"/><text x="313" y="44" font-size="10" font-family="sans-serif" fill="#fff" fill-opacity=".35">W2</text><line x1="366" y1="50" x2="366" y2="370" stroke="#fff" stroke-opacity=".06"/><text x="371" y="44" font-size="10" font-family="sans-serif" fill="#fff" fill-opacity=".35">W3</text><line x1="424" y1="50" x2="424" y2="370" stroke="#fff" stroke-opacity=".06"/><text x="429" y="44" font-size="10" font-family="sans-serif" fill="#fff" fill-opacity=".35">W4</text><line x1="482" y1="50" x2="482" y2="370" stroke="#fff" stroke-opacity=".06"/><text x="487" y="44" font-size="10" font-family="sans-serif" fill="#fff" fill-opacity=".35">W5</text><line x1="540" y1="50" x2="540" y2="370" stroke="#fff" stroke-opacity=".06"/><text x="545" y="44" font-size="10" font-family="sans-serif" fill="#fff" fill-opacity=".35">W6</text><line x1="598" y1="50" x2="598" y2="370" stroke="#fff" stroke-opacity=".06"/><text x="603" y="44" font-size="10" font-family="sans-serif" fill="#fff" fill-opacity=".35">W7</text><line x1="656" y1="50" x2="656" y2="370" stroke="#fff" stroke-opacity=".06"/><text x="661" y="44" font-size="10" font-family="sans-serif" fill="#fff" fill-opacity=".35">W8</text><line x1="714" y1="50" x2="714" y2="370" stroke="#fff" stroke-opacity=".06"/><text x="719" y="44" font-size="10" font-family="sans-serif" fill="#fff" fill-opacity=".35">W9</text><line x1="772" y1="50" x2="772" y2="370" stroke="#fff" stroke-opacity=".06"/><text x="777" y="44" font-size="10" font-family="sans-serif" fill="#fff" fill-opacity=".35">W10</text><rect x="250" y="72" width="70" height="24" rx="12" fill="#2fe38f" fill-opacity=".18" stroke="#2fe38f"/><rect x="250" y="72" width="70" height="24" rx="12" fill="#2fe38f"/><path d="M320,84 h7 V130 h7" fill="none" stroke="#fff" stroke-opacity=".45"/><rect x="334" y="118" width="90" height="24" rx="12" fill="#2fe38f" fill-opacity=".18" stroke="#2fe38f"/><rect x="334" y="118" width="90" height="24" rx="12" fill="#2fe38f"/><path d="M424,130 h7 V176 h7" fill="none" stroke="#fff" stroke-opacity=".45"/><rect x="438" y="164" width="80" height="24" rx="12" fill="#2fe38f" fill-opacity=".18" stroke="#2fe38f"/><rect x="438" y="164" width="56" height="24" rx="12" fill="#2fe38f"/><path d="M518,176 h7 V222 h7" fill="none" stroke="#fff" stroke-opacity=".45"/><rect x="532" y="210" width="100" height="24" rx="12" fill="#2fe38f" fill-opacity=".18" stroke="#2fe38f"/><rect x="532" y="210" width="40" height="24" rx="12" fill="#2fe38f"/><path d="M632,222 h7 V268 h7" fill="none" stroke="#fff" stroke-opacity=".45"/><rect x="646" y="256" width="70" height="24" rx="12" fill="#2fe38f" fill-opacity=".18" stroke="#2fe38f"/><path d="M716,268 h7 V314 h7" fill="none" stroke="#fff" stroke-opacity=".45"/><rect x="730" y="302" width="56" height="24" rx="12" fill="#2fe38f" fill-opacity=".18" stroke="#2fe38f"/><rect x="327" y="347" width="14" height="14" transform="rotate(45 334 354)" fill="#2fe38f"/><rect x="525" y="347" width="14" height="14" transform="rotate(45 532 354)" fill="#2fe38f"/><rect x="779" y="347" width="14" height="14" transform="rotate(45 786 354)" fill="#2fe38f"/><line x1="560" y1="40" x2="560" y2="372" stroke="#fff" stroke-opacity=".6" stroke-dasharray="5 5"/></symbol></svg>
+
+  <!-- Navigation -->
+  <header class="fixed top-0 w-full z-50 glass-nav border-b border-line">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 font-display font-extrabold text-lg tracking-tight">
+        <span class="relative block w-6 h-6" aria-hidden="true" style="isolation:isolate">
+          <i class="absolute rounded-full bg-cr" style="width:14px;height:14px;left:0;top:0;mix-blend-mode:screen"></i>
+          <i class="absolute rounded-full bg-cg" style="width:14px;height:14px;right:0;top:0;mix-blend-mode:screen"></i>
+          <i class="absolute rounded-full bg-cb" style="width:14px;height:14px;left:5px;bottom:0;mix-blend-mode:screen"></i>
+        </span>
+        CHROMA3
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm text-mute">
+        <a href="#reel" class="hover:text-paper transition">Showreel</a>
+        <a href="#work" class="hover:text-paper transition">Selected Work</a>
+        <a href="#services" class="hover:text-paper transition">Capabilities</a>
+        <a href="#consulting" class="hover:text-paper transition">Consulting</a>
+        <a href="#social" class="hover:text-paper transition">Social Feed</a>
+        <a href="#contact" class="px-4 py-2 rounded-full bg-paper text-ink font-medium hover:bg-white transition">Let's Talk</a>
+      </nav>
+      <button id="menu-btn" class="md:hidden p-2 -mr-2 text-paper" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav id="mobile-nav" class="hidden md:hidden border-t border-line px-6 py-4 flex flex-col gap-4 text-sm text-mute">
+      <a href="#reel" class="hover:text-paper">Showreel</a>
+      <a href="#work" class="hover:text-paper">Selected Work</a>
+      <a href="#services" class="hover:text-paper">Capabilities</a>
+      <a href="#consulting" class="hover:text-paper">Consulting</a>
+      <a href="#social" class="hover:text-paper">Social Feed</a>
+      <a href="#contact" class="text-paper font-medium">Let's Talk</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="pt-32 md:pt-40 pb-16 px-6 max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-[1.25fr_.75fr] gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-panel border border-line text-xs text-mute mb-7">
+          <span class="w-2 h-2 rounded-full bg-cg animate-pulse"></span>
+          Got a project? Let's work.
+        </div>
+        <h1 class="font-display text-5xl md:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.04]">
+          From the first frame to the final build.
+        </h1>
+        <p class="mt-7 text-mute text-lg md:text-xl max-w-xl font-light leading-relaxed">
+          CHROMA3 is a creative and advisory studio. We make films and motion design, advise on architecture, and manage projects from the first brief to handover.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3 text-sm">
+          <a href="#reel" class="px-5 py-3 rounded-full bg-paper text-ink font-medium hover:bg-white transition">Watch the showreel</a>
+          <a href="#consulting" class="px-5 py-3 rounded-full border border-line text-paper hover:border-mute transition">Architecture &amp; project management</a>
+        </div>
+      </div>
+      <div class="rgb justify-self-center lg:justify-self-end" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="b"></i></div>
+    </div>
+
+    <!-- Three disciplines -->
+    <div class="mt-20 grid md:grid-cols-3 border-t border-line">
+      <a href="#work" class="group py-7 md:pr-8 md:border-r border-line">
+        <span class="flex items-center gap-2 text-sm text-mute"><span class="w-2.5 h-2.5 rounded-full bg-cr"></span>Studio</span>
+        <span class="block font-display text-xl font-bold mt-2 group-hover:text-cr transition">Video &amp; motion</span>
+        <span class="block text-sm text-mute mt-1">Editing, motion design, VFX, and sound.</span>
+      </a>
+      <a href="architecture-consulting.html" class="group py-7 md:px-8 md:border-r border-line border-t md:border-t-0">
+        <span class="flex items-center gap-2 text-sm text-mute"><span class="w-2.5 h-2.5 rounded-full bg-cb"></span>Advisory</span>
+        <span class="block font-display text-xl font-bold mt-2 group-hover:text-cb transition">Architecture consulting</span>
+        <span class="block text-sm text-mute mt-1">Independent design guidance and visualisation.</span>
+      </a>
+      <a href="project-management.html" class="group py-7 md:pl-8 border-t md:border-t-0 border-line">
+        <span class="flex items-center gap-2 text-sm text-mute"><span class="w-2.5 h-2.5 rounded-full bg-cg"></span>Delivery</span>
+        <span class="block font-display text-xl font-bold mt-2 group-hover:text-cg transition">Project management</span>
+        <span class="block text-sm text-mute mt-1">Scope, schedule, budget, and coordination.</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Showreel (YouTube: ihfukjl8ANg) -->
+  <section id="reel" class="px-6 max-w-6xl mx-auto mb-28 scroll-mt-20">
+    <div id="reel-container" onclick="playShowreel()" class="relative aspect-video w-full rounded-2xl overflow-hidden bg-panel border border-line group cursor-pointer shadow-2xl" role="button" tabindex="0" aria-label="Play showreel" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();playShowreel();}">
+      <div class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10">
+        <div class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/25 flex items-center justify-center group-hover:scale-110 group-hover:bg-cr transition duration-300">
+          <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="mt-4 text-sm font-medium text-paper/80">Play showreel</span>
+      </div>
+      <img src="https://i.ytimg.com/vi/ihfukjl8ANg/maxresdefault.jpg" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop'" alt="Showreel cover" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700" />
+    </div>
+  </section>
+
+  <!-- Selected Work -->
+  <section id="work" class="px-6 max-w-6xl mx-auto mb-28 scroll-mt-20">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
+      <div>
+        <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight">Selected work</h2>
+        <p class="text-mute mt-2">Commercial edits, VFX compositing, and motion graphics.</p>
+      </div>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <button onclick="filterProjects('all', event)" aria-pressed="true" class="filter-btn px-4 py-2 rounded-full font-medium transition">All</button>
+        <button onclick="filterProjects('motion', event)" aria-pressed="false" class="filter-btn px-4 py-2 rounded-full transition">Motion &amp; VFX</button>
+        <button onclick="filterProjects('edit', event)" aria-pressed="false" class="filter-btn px-4 py-2 rounded-full transition">Commercial Edit</button>
+        <button onclick="filterProjects('social', event)" aria-pressed="false" class="filter-btn px-4 py-2 rounded-full transition">Short-Form</button>
+      </div>
+    </div>
+
+    <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-12">
+      <article class="project-card group" data-category="motion">
+        <div class="aspect-[4/3] relative overflow-hidden rounded-xl bg-panel">
+          <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1000&auto=format&fit=crop" alt="Brand campaign visuals" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <span class="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs text-paper/90 border border-white/10">VFX &amp; Compositing</span>
+        </div>
+        <h3 class="font-display text-xl font-bold mt-5">Brand Campaign Visuals</h3>
+        <p class="text-mute text-sm mt-1.5 max-w-md">Particle simulations, rotoscoping, and color matching pass for commercial spot.</p>
+      </article>
+
+      <article class="project-card group" data-category="edit">
+        <div class="aspect-[4/3] relative overflow-hidden rounded-xl bg-panel">
+          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1000&auto=format&fit=crop" alt="Global pitch manifesto" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <span class="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs text-paper/90 border border-white/10">Commercial Edit</span>
+        </div>
+        <h3 class="font-display text-xl font-bold mt-5">Global Pitch Manifesto</h3>
+        <p class="text-mute text-sm mt-1.5 max-w-md">High-energy sizzle reel, sound design, and rhythmic pacing for agency pitch.</p>
+      </article>
+
+      <article class="project-card group" data-category="social">
+        <div class="aspect-[4/3] relative overflow-hidden rounded-xl bg-panel">
+          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop" alt="Event recap and social cutdowns" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <span class="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs text-paper/90 border border-white/10">Short-Form &amp; Social</span>
+        </div>
+        <h3 class="font-display text-xl font-bold mt-5">Event Recap &amp; Social Cutdowns</h3>
+        <p class="text-mute text-sm mt-1.5 max-w-md">Fast-paced 1:1 and 9:16 social deliverables with custom kinetic typography.</p>
+      </article>
+
+      <article class="project-card group" data-category="motion">
+        <div class="aspect-[4/3] relative overflow-hidden rounded-xl bg-panel">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Title sequence and broadcast package" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <span class="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs text-paper/90 border border-white/10">Motion Design</span>
+        </div>
+        <h3 class="font-display text-xl font-bold mt-5">Title Sequence &amp; Broadcast Package</h3>
+        <p class="text-mute text-sm mt-1.5 max-w-md">2D/3D hybrid motion graphics, custom shaders, and audio-reactive elements.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Studio capabilities -->
+  <section id="services" class="px-6 max-w-6xl mx-auto mb-28 scroll-mt-20">
+    <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight mb-10">Capabilities &amp; toolstack</h2>
+    <div class="grid md:grid-cols-3 border-t border-line">
+      <a href="video-editing.html" class="group block py-8 md:pr-8 md:border-r border-line">
+        <div class="aspect-[16/9] rounded-xl overflow-hidden border border-line mb-6"><svg class="w-full h-full" viewBox="0 0 800 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><use href="#art-video-editing"/></svg></div>
+        <div class="text-sm text-cr">Post-production</div>
+        <h3 class="font-display text-xl font-bold mt-2 mb-3 group-hover:text-cr transition">Video Editing</h3>
+        <p class="text-mute text-sm leading-relaxed">Narrative assembly, commercial pacing, color grading, and multi-cam synchronization in Premiere Pro and DaVinci Resolve.</p>
+        <span class="inline-flex items-center gap-1.5 mt-5 text-sm text-paper">View service <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      </a>
+      <a href="motion-design-vfx.html" class="group block py-8 md:px-8 md:border-r border-line border-t md:border-t-0">
+        <div class="aspect-[16/9] rounded-xl overflow-hidden border border-line mb-6"><svg class="w-full h-full" viewBox="0 0 800 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><use href="#art-motion-design-vfx"/></svg></div>
+        <div class="text-sm text-cr">Animation</div>
+        <h3 class="font-display text-xl font-bold mt-2 mb-3 group-hover:text-cr transition">Motion Design &amp; VFX</h3>
+        <p class="text-mute text-sm leading-relaxed">Kinetic typography, 2D/3D compositing, rotoscoping, particle effects, and custom tool scripting in After Effects.</p>
+        <span class="inline-flex items-center gap-1.5 mt-5 text-sm text-paper">View service <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      </a>
+      <a href="sound-design-mix.html" class="group block py-8 md:pl-8 border-t md:border-t-0 border-line">
+        <div class="aspect-[16/9] rounded-xl overflow-hidden border border-line mb-6"><svg class="w-full h-full" viewBox="0 0 800 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><use href="#art-sound-design-mix"/></svg></div>
+        <div class="text-sm text-cr">Audio &amp; finishing</div>
+        <h3 class="font-display text-xl font-bold mt-2 mb-3 group-hover:text-cr transition">Sound Design &amp; Mix</h3>
+        <p class="text-mute text-sm leading-relaxed">Bespoke SFX layering, music mastering, and stem mixing to drive visual impact and viewer retention.</p>
+        <span class="inline-flex items-center gap-1.5 mt-5 text-sm text-paper">View service <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- NEW: Architecture consulting & project management -->
+  <section id="consulting" class="bg-panel border-y border-line py-24 px-6 mb-28 scroll-mt-16">
+    <div class="max-w-6xl mx-auto">
+      <div class="max-w-2xl mb-14">
+        <h2 class="font-display text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.08]">Architecture consulting and project management</h2>
+        <p class="text-mute text-lg mt-5 font-light leading-relaxed">
+          Independent advice and hands-on delivery for homeowners, developers, and brands building physical spaces. Clear decisions early, fewer surprises on site.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- Architecture consulting -->
+        <div id="architecture" class="rounded-2xl border border-line bg-ink p-8 scroll-mt-24">
+          <div class="-mx-8 -mt-8 mb-8 aspect-[21/9] overflow-hidden rounded-t-2xl border-b border-line"><svg class="w-full h-full" viewBox="0 0 800 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><use href="#art-architecture-consulting"/></svg></div>
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-cb"></span>
+            <h3 class="font-display text-2xl font-bold">Architecture consulting</h3>
+          </div>
+          <p class="text-mute text-sm mt-3 mb-7 max-w-md">An independent second opinion on your design, from first sketch to submission.</p>
+          <ul class="rule-list">
+            <li class="py-4"><strong class="font-semibold">Concept &amp; feasibility review</strong><p class="text-mute text-sm mt-1">Test the site, budget, and brief against each other before the design commits.</p></li>
+            <li class="py-4"><strong class="font-semibold">Design development advice</strong><p class="text-mute text-sm mt-1">Layouts, materials, and details reviewed with an independent eye.</p></li>
+            <li class="py-4"><strong class="font-semibold">Planning &amp; approvals guidance</strong><p class="text-mute text-sm mt-1">Prepare submissions and respond to authority queries with confidence.</p></li>
+            <li class="py-4"><strong class="font-semibold">Architectural visualisation</strong><p class="text-mute text-sm mt-1">Walkthrough films, renders, and motion pieces for client sign-off and marketing.</p></li>
+          </ul>
+          <a href="architecture-consulting.html" class="inline-flex items-center gap-1.5 mt-6 text-sm text-paper hover:underline underline-offset-4">View architecture consulting page <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        </div>
+
+        <!-- Project management -->
+        <div id="management" class="rounded-2xl border border-line bg-ink p-8 scroll-mt-24">
+          <div class="-mx-8 -mt-8 mb-8 aspect-[21/9] overflow-hidden rounded-t-2xl border-b border-line"><svg class="w-full h-full" viewBox="0 0 800 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><use href="#art-project-management"/></svg></div>
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-cg"></span>
+            <h3 class="font-display text-2xl font-bold">Project management</h3>
+          </div>
+          <p class="text-mute text-sm mt-3 mb-7 max-w-md">One accountable lead keeping scope, schedule, and budget moving together.</p>
+          <ul class="rule-list">
+            <li class="py-4"><strong class="font-semibold">Scope, schedule &amp; budget</strong><p class="text-mute text-sm mt-1">A single plan, tracked and updated every week.</p></li>
+            <li class="py-4"><strong class="font-semibold">Consultant &amp; contractor coordination</strong><p class="text-mute text-sm mt-1">Briefs, tenders, and site meetings run to a clear agenda.</p></li>
+            <li class="py-4"><strong class="font-semibold">Risk &amp; change control</strong><p class="text-mute text-sm mt-1">Issues raised early and changes priced before they are built.</p></li>
+            <li class="py-4"><strong class="font-semibold">Reporting &amp; handover</strong><p class="text-mute text-sm mt-1">Plain-language progress updates and complete handover documentation.</p></li>
+          </ul>
+          <a href="project-management.html" class="inline-flex items-center gap-1.5 mt-6 text-sm text-paper hover:underline underline-offset-4">View project management page <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Process: a real sequence -->
+      <div class="mt-16">
+        <h3 class="font-display text-xl font-bold mb-6">How an engagement runs</h3>
+        <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
+          <li class="border-t border-line pt-4"><span class="font-display text-sm text-mute">1</span><div class="font-semibold mt-1">Brief</div><p class="text-mute text-sm mt-1">We agree goals, constraints, and what success looks like.</p></li>
+          <li class="border-t border-line pt-4"><span class="font-display text-sm text-mute">2</span><div class="font-semibold mt-1">Plan</div><p class="text-mute text-sm mt-1">Scope, programme, and budget set out in one document.</p></li>
+          <li class="border-t border-line pt-4"><span class="font-display text-sm text-mute">3</span><div class="font-semibold mt-1">Deliver</div><p class="text-mute text-sm mt-1">Weekly coordination, reviews, and reporting.</p></li>
+          <li class="border-t border-line pt-4"><span class="font-display text-sm text-mute">4</span><div class="font-semibold mt-1">Handover</div><p class="text-mute text-sm mt-1">Final records, lessons learned, and a clean close-out.</p></li>
+        </ol>
+      </div>
+
+      <div class="mt-14 flex flex-wrap items-center gap-4">
+        <a href="mailto:azwina@chroma3.me?subject=Architecture%20consulting%20%2F%20project%20management%20enquiry" class="px-6 py-3 rounded-full bg-paper text-ink font-medium text-sm hover:bg-white transition">Discuss a project</a>
+        <span class="text-sm text-mute">Consulting and studio work can be combined on one engagement.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Feed (live Instagram embeds) -->
+  <section id="social" class="px-6 max-w-6xl mx-auto mb-28 scroll-mt-20">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-5">
+      <div>
+        <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight">On the feed</h2>
+        <p class="text-mute mt-2">Latest short-form edits, motion tests, and visual recaps on Instagram &amp; TikTok.</p>
+      </div>
+      <div class="flex items-center gap-3 text-xs">
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="px-4 py-2 rounded-full bg-panel border border-line text-paper/90 hover:border-pink-500/60 hover:text-white transition flex items-center gap-2">
+          <svg class="w-4 h-4 text-pink-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram
+        </a>
+        <a href="https://tiktok.com/" target="_blank" rel="noopener" class="px-4 py-2 rounded-full bg-panel border border-line text-paper/90 hover:border-cyan-400/60 hover:text-white transition flex items-center gap-2">
+          <svg class="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="rounded-xl overflow-hidden bg-panel border border-line h-[540px]"><iframe src="https://www.instagram.com/p/DeolhSJtdBq/embed" title="Instagram post" class="w-full h-full" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe></div>
+      <div class="rounded-xl overflow-hidden bg-panel border border-line h-[540px]"><iframe src="https://www.instagram.com/p/Des-ggRtd47/embed" title="Instagram post" class="w-full h-full" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe></div>
+      <div class="rounded-xl overflow-hidden bg-panel border border-line h-[540px]"><iframe src="https://www.instagram.com/p/DdnxyVoNExp/embed" title="Instagram post" class="w-full h-full" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy"></iframe></div>
+    </div>
+  </section>
+
+  <!-- Footer / Contact -->
+  <footer id="contact" class="border-t border-line pt-20 pb-10 px-6 scroll-mt-16">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+      <div>
+        <h2 class="font-display text-3xl md:text-5xl font-extrabold tracking-tight">Have a brief in mind?</h2>
+        <p class="text-mute mt-3 max-w-lg">Available for full-day bookings, project retainers, remote collaborations, and consulting engagements.</p>
+        <a href="mailto:azwina@chroma3.me" class="inline-block mt-6 text-xl font-medium text-paper underline decoration-cr underline-offset-8 decoration-2 hover:decoration-cb transition">azwina@chroma3.me</a>
+      </div>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-mute">
+        <a href="#" class="hover:text-paper transition">Instagram</a>
+        <a href="#" class="hover:text-paper transition">TikTok</a>
+        <a href="#" class="hover:text-paper transition">YouTube</a>
+        <a href="#" class="hover:text-paper transition">Vimeo</a>
+        <a href="#" class="hover:text-paper transition">LinkedIn</a>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto mt-16 pt-6 border-t border-line text-xs text-mute">© 2026 CHROMA3</div>
+  </footer>
+
+  <script>
+    // Showreel: load and autoplay YouTube on click
+    function playShowreel() {
+      const c = document.getElementById('reel-container');
+      c.removeAttribute('onclick'); c.removeAttribute('role'); c.removeAttribute('tabindex'); c.removeAttribute('onkeydown');
+      c.innerHTML = '<iframe class="w-full h-full" src="https://www.youtube.com/embed/ihfukjl8ANg?autoplay=1&rel=0&modestbranding=1" title="CHROMA3 Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+    }
+
+    // Filter selected work
+    function filterProjects(category, event) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+      event.currentTarget.setAttribute('aria-pressed', 'true');
+      document.querySelectorAll('.project-card').forEach(card => {
+        card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+      });
+    }
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.add('hidden'); menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+  </script>
+</body>
+</html>
